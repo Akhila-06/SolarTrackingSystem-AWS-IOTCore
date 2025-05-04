@@ -1,0 +1,4 @@
+# Ignore all certificate/key files
+*.pem
+*.key
+*.crt
