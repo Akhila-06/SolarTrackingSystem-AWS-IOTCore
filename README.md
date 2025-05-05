@@ -1,4 +1,4 @@
-Smart Solar Monitoring System with ML and AWS IOT Core
+Solar Tracking System with ML and AWS IOT Core
 
 1. Hardware Setup & Data Collection
 
@@ -6,7 +6,7 @@ Sensors Used: Two LDRs (LDR1 and LDR2), a DHT11 temperature and humidity sensor,
 
 Arduino Uno R4 WiFi collects analog readings:
 
-LDR1 and LDR2 measure light intensity.
+LDR1 and LDR2 measure light intensity. (Which are taken in multiple ways directly under sunlight, with mobile flashlight, fire , in dimlight)
 
 The solar panel provides voltage levels.
 
@@ -46,7 +46,13 @@ Multiple panels are created for each sensor showing average, latest value, and t
 
 Time filters allow visualization over minutes, hours, or days.
 
-6. Machine Learning Prediction
+6. Dashboard-Based Summary
+
+The final dashboard in Grafana uses the uploaded CSV data.
+
+Stat panels show the mean value for each sensor along with a small trend line.
+
+7. Machine Learning Prediction
 
 Historical sensor data from AWS or local logs is saved into a CSV file.
 
@@ -54,18 +60,13 @@ A Python ML script reads the CSV and trains linear regression models to predict 
 
 Inputs: LDR1, LDR2, Temp, Humid.
 
-Outputs: Predicted LDR1, LDR2, Temp, Humid, Voltage.
+Outputs: Predicted LDR1, Predicted LDR2, Predicted Temp, Predicted Humid, Predicted Voltage.
 
 The model results are saved in a new CSV file with actual vs predicted values.
 
-7. Visualization of Predictions
+8. Visualization of Predictions
 
 Using Matplotlib, actual vs predicted plots are generated for all five metrics.
 
 These graphs show how well the ML models track sensor behavior over time.
 
-8. Dashboard-Based Summary
-
-The final dashboard in Grafana uses the uploaded CSV data.
-
-Stat panels show the mean value for each sensor along with a small trend line.
